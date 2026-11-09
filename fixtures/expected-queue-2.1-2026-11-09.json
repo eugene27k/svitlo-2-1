@@ -1,0 +1,208 @@
+{
+  "queueName": "2.1",
+  "queueId": 16,
+  "days": {
+    "2026-11-09": {
+      "intervals": [
+        {
+          "start": "00:00",
+          "end": "07:00",
+          "zone": "green",
+          "types": [
+            "ENABLE"
+          ]
+        },
+        {
+          "start": "07:00",
+          "end": "07:30",
+          "zone": "yellow",
+          "types": [
+            "PROBABLY_OFF"
+          ]
+        },
+        {
+          "start": "07:30",
+          "end": "10:00",
+          "zone": "red",
+          "types": [
+            "OFF"
+          ]
+        },
+        {
+          "start": "10:00",
+          "end": "10:30",
+          "zone": "yellow",
+          "types": [
+            "PROBABLY_OFF"
+          ]
+        },
+        {
+          "start": "10:30",
+          "end": "14:00",
+          "zone": "green",
+          "types": [
+            "ENABLE"
+          ]
+        },
+        {
+          "start": "14:00",
+          "end": "14:30",
+          "zone": "yellow",
+          "types": [
+            "PROBABLY_OFF"
+          ]
+        },
+        {
+          "start": "14:30",
+          "end": "17:00",
+          "zone": "red",
+          "types": [
+            "OFF"
+          ]
+        },
+        {
+          "start": "17:00",
+          "end": "17:30",
+          "zone": "yellow",
+          "types": [
+            "PROBABLY_OFF"
+          ]
+        },
+        {
+          "start": "17:30",
+          "end": "24:00",
+          "zone": "green",
+          "types": [
+            "ENABLE"
+          ]
+        }
+      ],
+      "notificationMoments": [
+        {
+          "at": "06:30",
+          "events": [
+            "T-30 yellow@07:00"
+          ]
+        },
+        {
+          "at": "06:45",
+          "events": [
+            "T-15 yellow@07:00"
+          ]
+        },
+        {
+          "at": "07:00",
+          "events": [
+            "T-0 yellow@07:00",
+            "T-30 red@07:30"
+          ]
+        },
+        {
+          "at": "07:15",
+          "events": [
+            "T-15 red@07:30"
+          ]
+        },
+        {
+          "at": "07:30",
+          "events": [
+            "T-0 red@07:30"
+          ]
+        },
+        {
+          "at": "09:30",
+          "events": [
+            "T-30 yellow@10:00"
+          ]
+        },
+        {
+          "at": "09:45",
+          "events": [
+            "T-15 yellow@10:00"
+          ]
+        },
+        {
+          "at": "10:00",
+          "events": [
+            "T-0 yellow@10:00",
+            "T-30 green@10:30"
+          ]
+        },
+        {
+          "at": "10:15",
+          "events": [
+            "T-15 green@10:30"
+          ]
+        },
+        {
+          "at": "10:30",
+          "events": [
+            "T-0 green@10:30"
+          ]
+        },
+        {
+          "at": "13:30",
+          "events": [
+            "T-30 yellow@14:00"
+          ]
+        },
+        {
+          "at": "13:45",
+          "events": [
+            "T-15 yellow@14:00"
+          ]
+        },
+        {
+          "at": "14:00",
+          "events": [
+            "T-0 yellow@14:00",
+            "T-30 red@14:30"
+          ]
+        },
+        {
+          "at": "14:15",
+          "events": [
+            "T-15 red@14:30"
+          ]
+        },
+        {
+          "at": "14:30",
+          "events": [
+            "T-0 red@14:30"
+          ]
+        },
+        {
+          "at": "16:30",
+          "events": [
+            "T-30 yellow@17:00"
+          ]
+        },
+        {
+          "at": "16:45",
+          "events": [
+            "T-15 yellow@17:00"
+          ]
+        },
+        {
+          "at": "17:00",
+          "events": [
+            "T-0 yellow@17:00",
+            "T-30 green@17:30"
+          ]
+        },
+        {
+          "at": "17:15",
+          "events": [
+            "T-15 green@17:30"
+          ]
+        },
+        {
+          "at": "17:30",
+          "events": [
+            "T-0 green@17:30"
+          ]
+        }
+      ]
+    }
+  }
+}

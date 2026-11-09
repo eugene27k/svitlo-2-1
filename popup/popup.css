@@ -1,0 +1,102 @@
+/* Системні шрифти, без зовнішніх ресурсів (PRD 4.3).
+   Тема вікна (системна/світла/темна): кожен колір — light-dark(світлий, темний).
+   Обирає варіант color-scheme на <html>: без атрибута — «light dark», тобто тема ОС
+   (режим «Системна», змінюється на льоту без JavaScript); data-theme="light|dark"
+   фіксують тему явно. Потрібен Chrome 123+. */
+:root {
+  color-scheme: light dark;
+
+  /* Зони: смуги доби, межі відрізків, крапки легенди (темні — м'які 300-ті відтінки) */
+  --zone-red: light-dark(#D93025, #F28B82);
+  --zone-yellow: light-dark(#F9AB00, #FDD663);
+  --zone-green: light-dark(#1E8E3E, #81C995);
+
+  --text: light-dark(#202124, #E8EAED);
+  --text-gray: light-dark(#5F6368, #9AA0A6);
+  --text-legend: light-dark(#3C4043, #BDC1C6);
+  --warn-text: light-dark(#A05000, #FDD663);
+  --bg: light-dark(#FFFFFF, #202124);
+  --surface: light-dark(#F8F9FA, #303134);
+  --border: light-dark(#DADCE0, #3C4043);
+
+  --btn-hover: light-dark(#F1F3F4, #3C4043);
+  --accent: light-dark(#1A73E8, #8AB4F8);
+  --now-marker: light-dark(#202124, #E8EAED);
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+body {
+  width: 340px;
+  margin: 0;
+  padding: 12px;
+  font: 13px/1.45 system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+.top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 8px; }
+h1 { font-size: 16px; margin: 0; }
+h2 { font-size: 12px; margin: 10px 0 4px; color: var(--text-gray); text-transform: uppercase; letter-spacing: .04em; }
+.zone .current { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.zone .next { color: var(--text-gray); }
+.segments { list-style: none; margin: 0 0 4px; padding: 0; }
+.segments li { padding: 1px 0 1px 10px; border-left: 3px solid var(--border); margin: 2px 0; }
+.segments li.red { border-color: var(--zone-red); }
+.segments li.yellow { border-color: var(--zone-yellow); }
+.segments li.green { border-color: var(--zone-green); }
+.meta { color: var(--text-gray); margin-top: 10px; }
+.meta div { margin: 2px 0; }
+.checks { list-style: none; margin: 4px 0 0; padding: 6px 8px; max-height: 120px; overflow: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+.checks li { margin: 1px 0; }
+.checks li.warn { color: var(--warn-text); }
+.checks li.error { color: var(--zone-red); }
+.note { margin-top: 6px; }
+.note.warn { color: var(--zone-red); }
+.note.ok { color: var(--zone-green); }
+.hidden { display: none; }
+
+/* Ряд іконок у шапці (мінімалізм): дії без тексту, значення — у title при наведенні.
+   Іконки — stroke="currentColor", колір успадковується від --text, тож однаково
+   працюють у світлій і темній темі без окремих версій. */
+.toolbar { display: flex; align-items: center; gap: 2px; flex: none; }
+.toolbar button, .toolbar a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; padding: 0; border: 0; border-radius: 6px;
+  background: transparent; color: var(--text); cursor: pointer; text-decoration: none;
+}
+.toolbar button:hover, .toolbar a:hover { background: var(--btn-hover); }
+.toolbar button:disabled { opacity: .5; cursor: default; background: transparent; }
+.toolbar svg { display: block; width: 15px; height: 15px; }
+
+/* Кнопка теми: показує іконку поточного режиму; клік циклічно system → light → dark */
+#theme-toggle .theme-icon { display: none; }
+#theme-toggle[data-mode="system"] .icon-system,
+#theme-toggle[data-mode="light"] .icon-light,
+#theme-toggle[data-mode="dark"] .icon-dark { display: block; }
+
+/* «Звіт скопійовано»: замість тексту — зелона галочка на 2,5 с */
+#copy-report .icon-check { display: none; }
+#copy-report.copied .icon-copy { display: none; }
+#copy-report.copied .icon-check { display: block; color: var(--zone-green); }
+
+/* Смуги доби: кольорові відрізки на 24 години з позначкою «зараз», показані завжди */
+.timeline { margin: 2px 0 6px; }
+.tl-day { margin-bottom: 0; }
+.tl-bar { position: relative; display: flex; height: 16px; border-radius: 4px; overflow: hidden; }
+.tl-bar .seg { height: 100%; }
+.tl-bar .seg.red { background: var(--zone-red); }
+.tl-bar .seg.yellow { background: var(--zone-yellow); }
+.tl-bar .seg.green { background: var(--zone-green); }
+.tl-bar .tl-now { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--now-marker); border-radius: 1px; }
+.tl-ruler { position: relative; height: 13px; font-size: 9px; color: var(--text-gray); }
+.tl-ruler span { position: absolute; top: 2px; transform: translateX(-50%); white-space: nowrap; }
+.tl-ruler span.edge-l { transform: none; }
+.tl-ruler span.edge-r { transform: translateX(-100%); }
+.tl-legend { font-size: 11px; color: var(--text-legend); margin-top: 2px; }
+.tl-legend .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 4px 0 10px; }
+.tl-legend .dot.red { background: var(--zone-red); }
+.tl-legend .dot.yellow { background: var(--zone-yellow); }
+.tl-legend .dot.green { background: var(--zone-green); }
+.tl-empty { font-size: 11px; color: var(--text-gray); }
+button { font: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
